@@ -1,17 +1,13 @@
-import {
-  QUESTION_REQUESTING,
-  QUESTION_SUCCESS,
-  QUESTION_ERROR,
-} from '../constants';
+import { RESULT_REQUESTING, RESULT_SUCCESS, RESULT_ERROR } from '../constants';
 
-const initialState: { errors: any; questions: any } = {
+const initialState: { errors: any; result: any } = {
   errors: [],
-  questions: [],
+  result: {},
 };
 
-const questionReducer: any = (state = initialState, action: any) => {
+const resultReducer: any = (state = initialState, action: any) => {
   switch (action.type) {
-    case QUESTION_REQUESTING:
+    case RESULT_REQUESTING:
       return {
         ...state,
         loading: true,
@@ -19,21 +15,21 @@ const questionReducer: any = (state = initialState, action: any) => {
         errors: [],
       };
 
-    case QUESTION_SUCCESS:
+    case RESULT_SUCCESS:
       return {
         ...state,
         errors: [],
         loading: false,
         success: true,
-        questions: action.response,
+        result: action.response,
       };
 
-    case QUESTION_ERROR:
+    case RESULT_ERROR:
       return {
         errors: state.errors.concat([action.error.toString()]),
         loading: false,
         success: false,
-        questions: [],
+        result: {},
       };
 
     default:
@@ -41,4 +37,4 @@ const questionReducer: any = (state = initialState, action: any) => {
   }
 };
 
-export default questionReducer;
+export default resultReducer;

@@ -14,6 +14,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return Question::all();
+        return Question::orderBy('id', 'asc')->get();
     }
 }

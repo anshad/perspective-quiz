@@ -7,6 +7,7 @@ const Radio = (props: any) => {
       <input
         id={props.id}
         name={props.name}
+        onChange={props.change}
         required={props.required ? props.required : false}
         type='radio'
         value={props.value}
@@ -20,11 +21,12 @@ const Radio = (props: any) => {
 
 Radio.propTypes = {
   ariaLabel: PropTypes.string,
+  change: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   required: PropTypes.bool,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default Radio;

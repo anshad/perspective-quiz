@@ -14,7 +14,7 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->text('question');
             $table->string('dimension');
             $table->tinyInteger('direction');

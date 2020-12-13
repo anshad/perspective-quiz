@@ -1,47 +1,24 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { fetchQuestions } from './actions';
-import Question from './components/Question';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
+import Home from './components/Home';
+import Result from './components/Result';
 
 function App(props: any) {
-  useEffect(() => {
-    if (props.questions && props.questions.length === 0) {
-      props.fetchQuestions();
-    }
-  });
-
   return (
-    <div className='app'>
-      <header className='app-header'>
-        <h3>Discover Your Perspective</h3>
-        <p>
-          Complete the 7 min test and get a detailed report of your lenses on
-          the world.
-        </p>
-      </header>
-      <div className='questions'>
-        <form>
-          {props.questions &&
-            props.questions.map((q: any) => (
-              <Question key={q.id} id={q.id} text={q.question} />
-            ))}
-        </form>
+    <Router>
+      <div className='app'>
+        <Switch>
+          <Route path='/result/:id'>
+            <Result />
+          </Route>
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
-const mapStateToProps = (state: any) => ({
-  questions: state.question.questions,
-});
 
-const mapDispatchToProps = {
-  fetchQuestions,
-};
-
-App.propTypes = {
-  questions: PropTypes.array.isRequired,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

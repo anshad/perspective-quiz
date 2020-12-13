@@ -12,6 +12,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Completely Disagree'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='1'
@@ -20,6 +21,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Strongly Disagree'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='2'
@@ -28,6 +30,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Disagree Somewhat'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='3'
@@ -36,6 +39,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Neutral'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='4'
@@ -44,6 +48,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Agree Somewhat'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='5'
@@ -52,6 +57,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Strongly Agree'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='6'
@@ -60,6 +66,7 @@ const Question = (props: any) => {
 
         <Radio
           ariaLabel='Completely Agree'
+          change={props.change}
           required
           name={`question-${props.id}`}
           value='7'
@@ -73,8 +80,9 @@ const Question = (props: any) => {
 };
 
 Question.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
+  change: PropTypes.func,
 };
 
 export default Question;

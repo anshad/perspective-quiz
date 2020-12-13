@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO: add other CRUD options later
+// TODO: add other CRUD options later if admin functionality required
 Route::apiResource('question', QuestionController::class)->only(['index']);
+Route::post('answer', 'AnswerController@store');
+Route::get('result/{id}', 'AnswerController@result');
